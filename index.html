@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Rebeca ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .carta {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+      color: #333;
+      white-space: pre-wrap;
+      min-height: 200px;
+    }
+
+    .botoes {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .botoes button {
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff4d6d;
+      color: white;
+      cursor: pointer;
+    }
+
+    .botoes button:hover {
+      background-color: #ff1e44;
+      transform: scale(1.05);
+    }
+
+    .coraçao {
+      position: fixed;
+      font-size: 24px;
+      color: red;
+      animation: flutuar 5s linear infinite;
+    }
+
+    @keyframes flutuar {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carta" id="carta"></div>
+  <div class="botoes" id="botoes">
+    <button onclick="explodirCoracoes()">Te Amo ❤️</button>
+    <button onclick="window.location.href='presente.html'">Clique para receber seu presente secreto 🎁</button>
+  </div>
+
+  <script>
+    const texto = `Oi Rebeca,\n\nHoje é o nosso Dia dos Namorados, e eu quis te dar uma surpresinha diferente. Eu fiz esse site com carinho, só pra você — porque você merece tudo de mais lindo nesse mundo.\n\nDesde que você entrou na minha vida, tudo ficou mais leve, mais feliz, mais verdadeiro. Estar com você é como viver um filme, daqueles que dá vontade de assistir mil vezes.\n\nEu quero te lembrar, aqui e agora, o quanto eu te amo, e o quanto eu sou grato por ter você comigo.\n\nAproveita essa surpresinha... tem algo especial pra você aqui. 💖\n\nCom todo meu amor,\nSeu namorado. ❤️`;
+
+    const cartaEl = document.getElementById("carta");
+    const botoes = document.getElementById("botoes");
+
+    let i = 0;
+
+    function escreverCarta() {
+      if (i < texto.length) {
+        cartaEl.innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(escreverCarta, 50);
+      } else {
+        botoes.style.opacity = 1;
+      }
+    }
+
+    function explodirCoracoes() {
+      for (let i = 0; i < 30; i++) {
+        const cor = document.createElement("div");
+        cor.className = "coraçao";
+        cor.style.left = Math.random() * 100 + "vw";
+        cor.style.animationDuration = 3 + Math.random() * 2 + "s";
+        cor.innerText = "❤️";
+        document.body.appendChild(cor);
+        setTimeout(() => cor.remove(), 5000);
+      }
+    }
+
+    escreverCarta();
+  </script>
+
+</body>
+</html>
